@@ -1,5 +1,5 @@
-import pathToRegExp = require('path-to-regexp');
-import Url = require('url-parse');
+const pathToRegExp = require('path-to-regexp');
+const Url = require('url-parse');
 import { Key, Path, Token } from 'path-to-regexp';
 import { HTTP_METHOD, invariant, safeDecodeURIComponent } from './lib';
 import { middlewareFunction } from './compose';
