@@ -1,5 +1,5 @@
 import Router from '../src/index';
-const Ette = require('ette');
+import Ette from 'ette';
 import Layer from '../src/layer';
 
 describe('[Layer] 中间件 - compose 多个中间件', function() {

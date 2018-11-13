@@ -3,6 +3,7 @@ var uglify = require('rollup-plugin-uglify').uglify;
 var terser = require('rollup-plugin-terser').terser;
 var path = require('path');
 var pkg = require('./package.json');
+var deps = Object.keys(pkg.dependencies || {});
 
 const targetName = 'index';
 const capitalize = ([first, ...rest], lowerRest = false) =>
@@ -31,9 +32,12 @@ const compileConfig = function({
   if (shouldMinified) {
     outputFileArr.splice(1, 0, 'min');
   }
-  return Object.assign(external ? {external: external} : {}, {
+  return Object.assign(external ? { external: external } : {}, {
     input: path.resolve(fromDir, `${targetName}.js`),
     output: Object.assign(
+      {
+        exports: 'named' // 这个很关键，统一 cmd 的引用方式
+      },
       format === 'umd'
         ? {
             name: capitalize(targetName),
@@ -73,7 +77,7 @@ module.exports = [
   // `file` and `format` for each target)
   compileConfig({
     fromDir: '.build.cjs',
-    external: ['big.js'],
+    external: deps,
     outputFileName: path.parse(pkg.main).name,
     shouldMinified: false,
     format: 'cjs'
@@ -81,7 +85,7 @@ module.exports = [
   // minified
   compileConfig({
     fromDir: '.build.cjs',
-    external: ['big.js'],
+    external: deps,
     outputFileName: path.parse(pkg.main).name,
     shouldMinified: true,
     format: 'cjs'
@@ -90,7 +94,7 @@ module.exports = [
   // es
   compileConfig({
     fromDir: '.build.es',
-    external: ['big.js'],
+    external: deps,
     outputFileName: path.parse(pkg.module).name,
     shouldMinified: false,
     format: 'es'
@@ -98,7 +102,7 @@ module.exports = [
   // es, minified
   compileConfig({
     fromDir: '.build.es',
-    external: ['big.js'],
+    external: deps,
     outputFileName: path.parse(pkg.module).name,
     shouldMinified: true,
     format: 'es'

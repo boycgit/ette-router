@@ -1,9 +1,9 @@
 import Router from '../src/index';
 import { HTTP_METHOD } from '../src/lib';
+import Ette from 'ette';
 const METHODS_LOWERCASE: string[] = Object.keys(HTTP_METHOD).map(k =>
   HTTP_METHOD[k as any].toLowerCase()
 );
-const Ette = require('ette');
 
 describe('[Router] 构造函数 - 创建实例', function() {
   let app, router, client;
@@ -1590,7 +1590,7 @@ function testPrefix(prefix) {
       router = new Router();
       client = app.client;
       middlewareCount = 0;
-    //   这个算中间件
+      //   这个算中间件
       router.use(function(ctx, next) {
         middlewareCount++;
         ctx.thing = 'worked';
@@ -1641,39 +1641,46 @@ function testPrefix(prefix) {
   };
 }
 
-
-describe('[Router] 静态方法 - url', function () {
-    it('生成路由 URL', function () {
-        var url = Router.url('/:category/:title', { category: 'programming', title: 'how-to-node' });
-        expect(url).toEqual('/programming/how-to-node');
+describe('[Router] 静态方法 - url', function() {
+  it('生成路由 URL', function() {
+    var url = Router.url('/:category/:title', {
+      category: 'programming',
+      title: 'how-to-node'
     });
+    expect(url).toEqual('/programming/how-to-node');
+  });
 
-    it('使用 encodeURIComponent() 转义', function () {
-        var url = Router.url('/:category/:title', { category: 'programming', title: 'how to node' });
-        expect(url).toEqual('/programming/how%20to%20node');
+  it('使用 encodeURIComponent() 转义', function() {
+    var url = Router.url('/:category/:title', {
+      category: 'programming',
+      title: 'how to node'
     });
+    expect(url).toEqual('/programming/how%20to%20node');
+  });
 
-    it('根据 params 和 query 生成 URL', function () {
-        var url = Router.url('/books/:category/:id', 'programming', 4, {
-            query: { page: 3, limit: 10 }
-        });
-        expect(url).toEqual('/books/programming/4?page=3&limit=10');
-        var url = Router.url('/books/:category/:id',
-            { category: 'programming', id: 4 },
-            { query: { page: 3, limit: 10 } }
-        );
-        expect(url).toEqual('/books/programming/4?page=3&limit=10');
-        var url = Router.url('/books/:category/:id',
-            { category: 'programming', id: 4 },
-            { query: 'page=3&limit=10' }
-        );
-        expect(url).toEqual('/books/programming/4?page=3&limit=10');
+  it('根据 params 和 query 生成 URL', function() {
+    var url = Router.url('/books/:category/:id', 'programming', 4, {
+      query: { page: 3, limit: 10 }
     });
+    expect(url).toEqual('/books/programming/4?page=3&limit=10');
+    var url = Router.url(
+      '/books/:category/:id',
+      { category: 'programming', id: 4 },
+      { query: { page: 3, limit: 10 } }
+    );
+    expect(url).toEqual('/books/programming/4?page=3&limit=10');
+    var url = Router.url(
+      '/books/:category/:id',
+      { category: 'programming', id: 4 },
+      { query: 'page=3&limit=10' }
+    );
+    expect(url).toEqual('/books/programming/4?page=3&limit=10');
+  });
 
-    it('在无 params 而有 query 的情况下也可以生成 url', function () {
-        var url = Router.url('/category', {
-            query: { page: 3, limit: 10 }
-        });
-        expect(url).toEqual('/category?page=3&limit=10');
+  it('在无 params 而有 query 的情况下也可以生成 url', function() {
+    var url = Router.url('/category', {
+      query: { page: 3, limit: 10 }
     });
+    expect(url).toEqual('/category?page=3&limit=10');
+  });
 });

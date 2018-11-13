@@ -43,7 +43,21 @@ npm test
 
 ## Usage
 
-test path: http://forbeslindesay.github.io/express-route-tester/
+### param
+
+example: https://repl.it/@boycgit/ette-router-param
+
+test your router rule: http://forbeslindesay.github.io/express-route-tester/
+
+## document
+
+```bash
+npm run doc
+```
+
+then open the generated `out/index.html` file in your browser.
+
+
 
 注：你写路由匹配规则时的 `/` 是很重要的，但你在用 `request` 方法中的 path 里的 `/` 则是无关紧要的；
 
@@ -71,14 +85,6 @@ router.get('/', function(ctx, next) {
 
 > 注意：只有当匹配路由规则的时候才会运行相关的中间件，匹配中间件上的 path 并不会运行中间件！！
 
-
-## document
-
-```bash
-npm run doc
-```
-
-then open the generated `out/index.html` file in your browser.
 
 ## License
 
