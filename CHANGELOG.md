@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/boycgit/ette-router/compare/v0.1.2...v0.1.3) (2018-11-13)
+
+
+### Features
+
+* **功能完善:** 更新 rollup 打包方式；新增 subscribe.test.ts 单元测试； ([d38400d](https://github.com/boycgit/ette-router/commit/d38400d))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/boycgit/ette-router/compare/v0.1.1...v0.1.2) (2018-10-18)
 
