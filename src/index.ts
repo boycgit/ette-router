@@ -22,7 +22,14 @@ interface MatchedRouter {
   route: boolean;
 }
 
+export type TMethodFunction = (name, path, middleware) => Router;
+
 export default class Router {
+  get: TMethodFunction;
+  put: TMethodFunction;
+  post: TMethodFunction;
+  del: TMethodFunction;
+  delete: TMethodFunction;
   opts: RouterOptions;
   params: object;
   stack: Layer[];
