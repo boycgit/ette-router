@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.6"></a>
+## [0.1.6](https://github.com/boycgit/ette-router/compare/v0.1.5...v0.1.6) (2019-02-12)
+
+
+### Bug Fixes
+
+* **打包输出:** 更改 rollup 打包配置项，生成合法的 umd.js 文件 ([86297e4](https://github.com/boycgit/ette-router/commit/86297e4))
+
+
+
 <a name="0.1.5"></a>
 ## [0.1.5](https://github.com/boycgit/ette-router/compare/v0.1.4...v0.1.5) (2019-02-12)
 
