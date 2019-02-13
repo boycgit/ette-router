@@ -1,8 +1,8 @@
-const pathToRegExp = require('path-to-regexp');
-const Url = require('url-parse');
 import { Key, Path, Token } from 'path-to-regexp';
 import { HTTP_METHOD, invariant, safeDecodeURIComponent } from './lib';
 import { middlewareFunction } from './compose';
+const pathToRegExp = require('path-to-regexp');
+const Url = require('url-parse');
 
 export interface LayerOptions {
   end?: boolean;
